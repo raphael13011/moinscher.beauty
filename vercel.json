@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/(.*\\.jpg)", "destination": "/$1" },
+    { "source": "/(.*\\.png)", "destination": "/$1" },
+    { "source": "/(.*\\.svg)", "destination": "/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
