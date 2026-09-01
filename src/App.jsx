@@ -8,6 +8,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showCGV, setShowCGV] = useState(false);
+  const [slide, setSlide] = useState(0);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -204,20 +205,13 @@ export default function App() {
               { product: "Charlotte Tilbury Pillow Talk", price: "35\u20AC", dupe: "Essence Cool Collagen", dupePrice: "3,49\u20AC", saving: "-90%", imgOrig: "/pillow-talk.jpg", imgDupe: "/essence-cool.jpg" },
               { product: "Drunk Elephant Protini", price: "72\u20AC", dupe: "CeraVe Cr\u00E8me Hydratante", dupePrice: "11,90\u20AC", saving: "-83%", imgOrig: "/drunk-elephant.jpg", imgDupe: "/cerave.jpg" }
             ];
-            const [slide, setSlide] = useState(0);
-            const prev = () => setSlide(s => s === 0 ? examples.length - 1 : s - 1);
-            const next = () => setSlide(s => s === examples.length - 1 ? 0 : s + 1);
-            const ex = examples[slide];
+            const ex = examples[slide % examples.length];
             return (
               <div style={{ position: "relative", maxWidth: 400, margin: "0 auto" }}>
-                {/* Arrows */}
-                <button onClick={prev} style={{ position: "absolute", left: -50, top: "50%", transform: "translateY(-50%)", background: "#f5eeea", border: "none", borderRadius: "50%", width: 40, height: 40, cursor: "pointer", fontSize: 18, color: "#9b5c5c", fontWeight: 700, display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>{"\u2039"}</button>
-                <button onClick={next} style={{ position: "absolute", right: -50, top: "50%", transform: "translateY(-50%)", background: "#f5eeea", border: "none", borderRadius: "50%", width: 40, height: 40, cursor: "pointer", fontSize: 18, color: "#9b5c5c", fontWeight: 700, display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>{"\u203A"}</button>
+                <button onClick={() => setSlide(s => s === 0 ? examples.length - 1 : s - 1)} style={{ position: "absolute", left: isMobile ? -16 : -50, top: "45%", transform: "translateY(-50%)", background: "#f5eeea", border: "none", borderRadius: "50%", width: 36, height: 36, cursor: "pointer", fontSize: 18, color: "#9b5c5c", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>{"\u2039"}</button>
+                <button onClick={() => setSlide(s => s === examples.length - 1 ? 0 : s + 1)} style={{ position: "absolute", right: isMobile ? -16 : -50, top: "45%", transform: "translateY(-50%)", background: "#f5eeea", border: "none", borderRadius: "50%", width: 36, height: 36, cursor: "pointer", fontSize: 18, color: "#9b5c5c", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>{"\u203A"}</button>
 
-                <div onClick={() => setQuery(ex.product)} style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 24, padding: 28, cursor: "pointer", transition: "all 0.3s", textAlign: "center" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#9b5c5c"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(155,92,92,0.1)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#ede5df"; e.currentTarget.style.boxShadow = "none"; }}
-                >
+                <div onClick={() => setQuery(ex.product)} style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 24, padding: 28, cursor: "pointer", transition: "all 0.3s", textAlign: "center" }}>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 20, marginBottom: 20 }}>
                     <div style={{ textAlign: "center" }}>
                       <div style={{ width: 90, height: 120, background: "#faf5f2", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", margin: "0 auto" }}>
@@ -226,12 +220,10 @@ export default function App() {
                       <div style={{ fontSize: 11, color: "#a08070", marginTop: 6, fontWeight: 500 }}>Original</div>
                       <div style={{ fontSize: 15, fontWeight: 700, color: "#3d2b1f", marginTop: 2 }}>{ex.price}</div>
                     </div>
-
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
                       <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #9b5c5c, #c27878)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700 }}>VS</div>
                       <span style={{ background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 700 }}>{ex.saving}</span>
                     </div>
-
                     <div style={{ textAlign: "center" }}>
                       <div style={{ width: 90, height: 120, background: "#faf5f2", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", margin: "0 auto" }}>
                         <img src={ex.imgDupe} alt={ex.dupe} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} onError={(e) => { e.currentTarget.style.display = "none"; }} />
@@ -240,20 +232,15 @@ export default function App() {
                       <div style={{ fontSize: 15, fontWeight: 700, color: "#9b5c5c", marginTop: 2 }}>{ex.dupePrice}</div>
                     </div>
                   </div>
-
                   <div style={{ fontSize: 13, color: "#7a6b62" }}>{ex.product}</div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: "#9b5c5c", marginTop: 2 }}>vs. {ex.dupe}</div>
                 </div>
 
-                {/* Dots */}
                 <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
                   {examples.map((_, idx) => (
-                    <button key={idx} onClick={() => setSlide(idx)} style={{ width: idx === slide ? 24 : 8, height: 8, borderRadius: 4, background: idx === slide ? "#9b5c5c" : "#ddd4cd", border: "none", cursor: "pointer", transition: "all 0.3s", padding: 0 }} />
+                    <button key={idx} onClick={() => setSlide(idx)} style={{ width: idx === slide % examples.length ? 24 : 8, height: 8, borderRadius: 4, background: idx === slide % examples.length ? "#9b5c5c" : "#ddd4cd", border: "none", cursor: "pointer", transition: "all 0.3s", padding: 0 }} />
                   ))}
                 </div>
-
-                {/* Swipe hint mobile */}
-                {isMobile && (<p style={{ textAlign: "center", fontSize: 12, color: "#a08070", marginTop: 10 }}>Swipez ou cliquez les points</p>)}
               </div>
             );
           })()}
