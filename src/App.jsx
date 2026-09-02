@@ -33,6 +33,7 @@ export default function App() {
   const [slide, setSlide] = useState(0);
   const [page, setPage] = useState("home");
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [likes, setLikes] = useState({});
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -123,19 +124,36 @@ export default function App() {
           <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: isMobile ? 24 : 30, fontWeight: 700, margin: "0 0 8px", textAlign: "center" }}>Blog Beaut{"\u00E9"}</h1>
           <p style={{ fontSize: 14, color: "#a08070", margin: "0 0 30px", textAlign: "center" }}>Guides, dupes et astuces pour d{"\u00E9"}penser moins sans compromis.</p>
           {blogArticles.map((article) => (
-            <div key={article.id} onClick={() => { setSelectedArticle(article); setPage("article"); }} style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 16, padding: 22, marginBottom: 12, cursor: "pointer", transition: "all 0.2s" }}
+            <div key={article.id} style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 16, marginBottom: 14, overflow: "hidden", transition: "all 0.2s" }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#9b5c5c"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#ede5df"; }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                <span style={{ background: "#fce8e8", color: "#9b5c5c", padding: "3px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600 }}>{article.category}</span>
-                <span style={{ fontSize: 12, color: "#a08070" }}>{article.readTime}</span>
-              </div>
-              <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 6px" }}>{article.title}</h3>
-              <p style={{ fontSize: 13, color: "#7a6b62", margin: "0 0 8px", lineHeight: 1.5 }}>{article.excerpt}</p>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: 12, color: "#a08070" }}>{article.date}</span>
-                <span style={{ fontSize: 13, color: "#9b5c5c", fontWeight: 600 }}>Lire {"\u2192"}</span>
+              {article.image && (
+                <div onClick={() => { setSelectedArticle(article); setPage("article"); }} style={{ cursor: "pointer" }}>
+                  <img src={article.image} alt={article.title} style={{ width: "100%", height: 180, objectFit: "cover" }} />
+                </div>
+              )}
+              <div style={{ padding: 22 }}>
+                <div onClick={() => { setSelectedArticle(article); setPage("article"); }} style={{ cursor: "pointer" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                    <span style={{ background: "#fce8e8", color: "#9b5c5c", padding: "3px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600 }}>{article.category}</span>
+                    <span style={{ fontSize: 12, color: "#a08070" }}>{article.readTime}</span>
+                  </div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 6px" }}>{article.title}</h3>
+                  <p style={{ fontSize: 13, color: "#7a6b62", margin: "0 0 12px", lineHeight: 1.5 }}>{article.excerpt}</p>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #f0ebe4", paddingTop: 12 }}>
+                  <span style={{ fontSize: 12, color: "#a08070" }}>{article.date}</span>
+                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                    <button onClick={() => setLikes(prev => ({ ...prev, [article.id]: (prev[article.id] || 0) + 1 }))} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4, color: likes[article.id] ? "#9b5c5c" : "#a08070", fontSize: 13, fontFamily: "inherit", padding: 0 }}>
+                      {likes[article.id] ? "\u2764" : "\u2661"} {likes[article.id] || ""}
+                    </button>
+                    <button onClick={(e) => { e.stopPropagation(); if (navigator.share) { navigator.share({ title: article.title, url: "https://moinscher.beauty/blog/" + article.id }); } else { navigator.clipboard.writeText("https://moinscher.beauty/blog/" + article.id); alert("Lien copi\u00E9 !"); } }} style={{ background: "none", border: "none", cursor: "pointer", color: "#a08070", fontSize: 13, fontFamily: "inherit", padding: 0 }}>
+                      Partager
+                    </button>
+                    <span onClick={() => { setSelectedArticle(article); setPage("article"); }} style={{ fontSize: 13, color: "#9b5c5c", fontWeight: 600, cursor: "pointer" }}>Lire {"\u2192"}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -158,7 +176,11 @@ export default function App() {
             <h2 onClick={() => setPage("home")} style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 24, fontWeight: 700, margin: "0 0 6px", cursor: "pointer" }}>MoinsCher<span style={{ color: "#9b5c5c" }}>.beauty</span></h2>
           </div>
           <button onClick={() => setPage("blog")} style={{ background: "none", border: "none", color: "#9b5c5c", fontSize: 13, cursor: "pointer", fontWeight: 500, fontFamily: "inherit", marginBottom: 20, display: "block" }}>{"\u2190"} Retour au blog</button>
-          <article style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 20, padding: isMobile ? 22 : 36 }}>
+          <article style={{ background: "#fff", border: "1px solid #ede5df", borderRadius: 20, overflow: "hidden" }}>
+            {selectedArticle.image && (
+              <img src={selectedArticle.image} alt={selectedArticle.title} style={{ width: "100%", height: 240, objectFit: "cover" }} />
+            )}
+            <div style={{ padding: isMobile ? 22 : 36 }}>
             <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
               <span style={{ background: "#fce8e8", color: "#9b5c5c", padding: "3px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600 }}>{selectedArticle.category}</span>
               <span style={{ fontSize: 12, color: "#a08070" }}>{selectedArticle.date}</span>
@@ -166,6 +188,15 @@ export default function App() {
             </div>
             <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: isMobile ? 24 : 32, fontWeight: 700, margin: "0 0 16px", lineHeight: 1.2 }}>{selectedArticle.title}</h1>
             <div>{renderMarkdown(selectedArticle.content)}</div>
+            <div style={{ display: "flex", gap: 16, alignItems: "center", marginTop: 24, paddingTop: 16, borderTop: "1px solid #f0ebe4" }}>
+              <button onClick={() => setLikes(prev => ({ ...prev, [selectedArticle.id]: (prev[selectedArticle.id] || 0) + 1 }))} style={{ background: likes[selectedArticle.id] ? "#fce8e8" : "#f5eeea", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, color: likes[selectedArticle.id] ? "#9b5c5c" : "#a08070", fontSize: 14, fontFamily: "inherit", padding: "8px 16px", borderRadius: 20 }}>
+                {likes[selectedArticle.id] ? "\u2764" : "\u2661"} {likes[selectedArticle.id] ? `${likes[selectedArticle.id]} J'aime` : "J'aime"}
+              </button>
+              <button onClick={() => { if (navigator.share) { navigator.share({ title: selectedArticle.title, url: "https://moinscher.beauty/blog/" + selectedArticle.id }); } else { navigator.clipboard.writeText("https://moinscher.beauty/blog/" + selectedArticle.id); alert("Lien copi\u00E9 !"); } }} style={{ background: "#f5eeea", border: "none", cursor: "pointer", color: "#a08070", fontSize: 14, fontFamily: "inherit", padding: "8px 16px", borderRadius: 20 }}>
+                Partager
+              </button>
+            </div>
+            </div>
           </article>
           <div style={{ background: "linear-gradient(135deg, #9b5c5c, #c27878)", borderRadius: 16, padding: 24, textAlign: "center", marginTop: 24 }}>
             <p style={{ color: "#fff", fontSize: 16, fontWeight: 600, margin: "0 0 10px" }}>Trouvez les dupes de vos produits</p>
@@ -329,20 +360,20 @@ export default function App() {
           <p style={{ fontSize: 13, color: "#a08070", margin: "0 0 24px", textAlign: "center" }}>Les meilleures alternatives trouv{"\u00E9"}es par notre IA</p>
 
           {TOP_DUPES.map((d) => (
-            <div key={d.rank} style={{ padding: "14px 16px", borderBottom: "1px solid #f0ebe4" }}>
-              <div onClick={() => setQuery(d.original)} style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer", transition: "opacity 0.2s" }}>
-                <div style={{ width: 28, height: 28, borderRadius: "50%", background: d.rank <= 3 ? "#9b5c5c" : "#ddd4cd", color: d.rank <= 3 ? "#fff" : "#7a6b62", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.rank}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "#3d2b1f" }}>{d.original} <span style={{ color: "#a08070", fontWeight: 400 }}>{d.origPrice}</span></div>
-                  <div style={{ fontSize: 12, color: "#9b5c5c" }}>{"\u2192"} {d.dupe} <strong>{d.dupePrice}</strong></div>
-                </div>
-                <div style={{ background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.saving}</div>
+            <div key={d.rank} onClick={() => setQuery(d.original)} style={{
+              display: "flex", alignItems: "center", gap: 14,
+              padding: "14px 16px", borderBottom: "1px solid #f0ebe4",
+              cursor: "pointer", transition: "background 0.2s"
+            }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#faf5f2"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+            >
+              <div style={{ width: 28, height: 28, borderRadius: "50%", background: d.rank <= 3 ? "#9b5c5c" : "#ddd4cd", color: d.rank <= 3 ? "#fff" : "#7a6b62", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.rank}</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#3d2b1f" }}>{d.original} <span style={{ color: "#a08070", fontWeight: 400 }}>{d.origPrice}</span></div>
+                <div style={{ fontSize: 12, color: "#9b5c5c" }}>{"\u2192"} {d.dupe} <strong>{d.dupePrice}</strong></div>
               </div>
-              <div style={{ display: "flex", gap: 6, marginTop: 8, paddingLeft: 42 }}>
-                {d.shops.map((shop, j) => (
-                  <a key={j} href={shop.u} target="_blank" rel="noopener noreferrer" style={{ background: "#9b5c5c", color: "#fff", padding: "4px 12px", borderRadius: 20, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>{shop.n} {"\u2192"}</a>
-                ))}
-              </div>
+              <div style={{ background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.saving}</div>
             </div>
           ))}
 
