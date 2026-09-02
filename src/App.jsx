@@ -10,16 +10,16 @@ const EXAMPLES = [
 ];
 
 const TOP_DUPES = [
-  { rank: 1, original: "La Mer Cr\u00E8me de la Mer", origPrice: "175\u20AC", dupe: "Nivea Cr\u00E8me", dupePrice: "2,50\u20AC", saving: "-99%" },
-  { rank: 2, original: "Charlotte Tilbury Flawless Filter", origPrice: "42\u20AC", dupe: "e.l.f. Halo Glow", dupePrice: "14\u20AC", saving: "-67%" },
-  { rank: 3, original: "Dior Lip Glow", origPrice: "38\u20AC", dupe: "Essence Tinted Lip Oil", dupePrice: "3,99\u20AC", saving: "-90%" },
-  { rank: 4, original: "Sol de Janeiro Bum Bum Cream", origPrice: "48\u20AC", dupe: "Tree Hut Butter", dupePrice: "8,99\u20AC", saving: "-81%" },
-  { rank: 5, original: "Drunk Elephant Protini", origPrice: "72\u20AC", dupe: "CeraVe Moisturizing Cream", dupePrice: "11,90\u20AC", saving: "-83%" },
-  { rank: 6, original: "Tom Ford Lost Cherry", origPrice: "350\u20AC", dupe: "Zara Red Temptation", dupePrice: "12,99\u20AC", saving: "-96%" },
-  { rank: 7, original: "MAC Ruby Woo", origPrice: "23,50\u20AC", dupe: "NYX Matte Lipstick", dupePrice: "7,90\u20AC", saving: "-66%" },
-  { rank: 8, original: "Olaplex N\u00B03", origPrice: "28\u20AC", dupe: "L\u2019Or\u00E9al Elvive Bond Repair", dupePrice: "9,90\u20AC", saving: "-65%" },
-  { rank: 9, original: "Chanel N\u00B05", origPrice: "135\u20AC", dupe: "Lidl Suddenly Madame Glamour", dupePrice: "3,99\u20AC", saving: "-97%" },
-  { rank: 10, original: "SK-II Facial Treatment Essence", origPrice: "240\u20AC", dupe: "Missha Time Revolution", dupePrice: "22\u20AC", saving: "-91%" }
+  { rank: 1, original: "La Mer Cr\u00E8me de la Mer", origPrice: "175\u20AC", dupe: "Nivea Cr\u00E8me", dupePrice: "2,50\u20AC", saving: "-99%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=Nivea+Creme" }, { n: "Carrefour", u: "https://www.carrefour.fr/s?q=nivea+creme" }] },
+  { rank: 2, original: "Charlotte Tilbury Flawless Filter", origPrice: "42\u20AC", dupe: "e.l.f. Halo Glow", dupePrice: "14\u20AC", saving: "-67%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=elf+halo+glow" }, { n: "Sephora", u: "https://www.sephora.fr/search?q=elf+halo+glow" }] },
+  { rank: 3, original: "Dior Lip Glow", origPrice: "38\u20AC", dupe: "Essence Tinted Lip Oil", dupePrice: "3,99\u20AC", saving: "-90%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=essence+tinted+lip+oil" }, { n: "Nocib\u00E9", u: "https://www.nocibe.fr/catalogsearch/result/?q=essence+lip+oil" }] },
+  { rank: 4, original: "Sol de Janeiro Bum Bum Cream", origPrice: "48\u20AC", dupe: "Tree Hut Butter", dupePrice: "8,99\u20AC", saving: "-81%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=tree+hut+butter" }, { n: "iHerb", u: "https://fr.iherb.com/search?kw=tree+hut+butter" }] },
+  { rank: 5, original: "Drunk Elephant Protini", origPrice: "72\u20AC", dupe: "CeraVe Moisturizing Cream", dupePrice: "11,90\u20AC", saving: "-83%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=cerave+creme+hydratante" }, { n: "Sephora", u: "https://www.sephora.fr/search?q=cerave+moisturizing" }] },
+  { rank: 6, original: "Tom Ford Lost Cherry", origPrice: "350\u20AC", dupe: "Zara Red Temptation", dupePrice: "12,99\u20AC", saving: "-96%", shops: [{ n: "Zara", u: "https://www.zara.com/fr/fr/search?searchTerm=red+temptation" }] },
+  { rank: 7, original: "MAC Ruby Woo", origPrice: "23,50\u20AC", dupe: "NYX Matte Lipstick", dupePrice: "7,90\u20AC", saving: "-66%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=nyx+matte+lipstick+perfect+red" }, { n: "Nocib\u00E9", u: "https://www.nocibe.fr/catalogsearch/result/?q=nyx+matte+lipstick" }] },
+  { rank: 8, original: "Olaplex N\u00B03", origPrice: "28\u20AC", dupe: "L\u2019Or\u00E9al Elvive Bond Repair", dupePrice: "9,90\u20AC", saving: "-65%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=loreal+elvive+bond+repair" }, { n: "Carrefour", u: "https://www.carrefour.fr/s?q=elvive+bond+repair" }] },
+  { rank: 9, original: "Chanel N\u00B05", origPrice: "135\u20AC", dupe: "Lidl Suddenly Madame Glamour", dupePrice: "3,99\u20AC", saving: "-97%", shops: [{ n: "Lidl", u: "https://www.lidl.fr" }] },
+  { rank: 10, original: "SK-II Facial Treatment Essence", origPrice: "240\u20AC", dupe: "Missha Time Revolution", dupePrice: "22\u20AC", saving: "-91%", shops: [{ n: "Amazon", u: "https://www.amazon.fr/s?k=missha+time+revolution+essence" }, { n: "iHerb", u: "https://fr.iherb.com/search?kw=missha+time+revolution" }] }
 ];
 
 export default function App() {
@@ -94,6 +94,15 @@ export default function App() {
     return content.trim().split('\n').map((line, i) => {
       if (line.startsWith('## ')) return <h2 key={i} style={{ fontSize: 20, fontWeight: 700, color: "#3d2b1f", margin: "28px 0 10px", lineHeight: 1.3 }}>{line.replace('## ', '')}</h2>;
       if (line.startsWith('**') && line.endsWith('**')) return <p key={i} style={{ fontSize: 14, fontWeight: 700, color: "#9b5c5c", margin: "12px 0 4px" }}>{line.replace(/\*\*/g, '')}</p>;
+      if (line.startsWith('[ACHETER:')) {
+        const shops = line.match(/\[ACHETER:([^\]]+)\]/g);
+        if (shops) {
+          return <div key={i} style={{ display: "flex", gap: 6, flexWrap: "wrap", margin: "10px 0 16px" }}>{shops.map((s, j) => {
+            const parts = s.replace('[ACHETER:', '').replace(']', '').split('|');
+            return <a key={j} href={parts[1]} target="_blank" rel="noopener noreferrer" style={{ background: "#9b5c5c", color: "#fff", padding: "6px 14px", borderRadius: 20, fontSize: 12, fontWeight: 600, textDecoration: "none" }}>{parts[0]} {"\u2192"}</a>;
+          })}</div>;
+        }
+      }
       if (line.trim() === '') return null;
       return <p key={i} style={{ fontSize: 14, color: "#5a4d45", margin: "6px 0", lineHeight: 1.8 }}>{line}</p>;
     });
@@ -320,22 +329,28 @@ export default function App() {
           <p style={{ fontSize: 13, color: "#a08070", margin: "0 0 24px", textAlign: "center" }}>Les meilleures alternatives trouv{"\u00E9"}es par notre IA</p>
 
           {TOP_DUPES.map((d) => (
-            <div key={d.rank} onClick={() => setQuery(d.original)} style={{
-              display: "flex", alignItems: "center", gap: 14,
-              padding: "14px 16px", borderBottom: "1px solid #f0ebe4",
-              cursor: "pointer", transition: "background 0.2s"
-            }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#faf5f2"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
-            >
-              <div style={{ width: 28, height: 28, borderRadius: "50%", background: d.rank <= 3 ? "#9b5c5c" : "#ddd4cd", color: d.rank <= 3 ? "#fff" : "#7a6b62", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.rank}</div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#3d2b1f" }}>{d.original} <span style={{ color: "#a08070", fontWeight: 400 }}>{d.origPrice}</span></div>
-                <div style={{ fontSize: 12, color: "#9b5c5c" }}>{"\u2192"} {d.dupe} <strong>{d.dupePrice}</strong></div>
+            <div key={d.rank} style={{ padding: "14px 16px", borderBottom: "1px solid #f0ebe4" }}>
+              <div onClick={() => setQuery(d.original)} style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer", transition: "opacity 0.2s" }}>
+                <div style={{ width: 28, height: 28, borderRadius: "50%", background: d.rank <= 3 ? "#9b5c5c" : "#ddd4cd", color: d.rank <= 3 ? "#fff" : "#7a6b62", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.rank}</div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#3d2b1f" }}>{d.original} <span style={{ color: "#a08070", fontWeight: 400 }}>{d.origPrice}</span></div>
+                  <div style={{ fontSize: 12, color: "#9b5c5c" }}>{"\u2192"} {d.dupe} <strong>{d.dupePrice}</strong></div>
+                </div>
+                <div style={{ background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.saving}</div>
               </div>
-              <div style={{ background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{d.saving}</div>
+              <div style={{ display: "flex", gap: 6, marginTop: 8, paddingLeft: 42 }}>
+                {d.shops.map((shop, j) => (
+                  <a key={j} href={shop.u} target="_blank" rel="noopener noreferrer" style={{ background: "#9b5c5c", color: "#fff", padding: "4px 12px", borderRadius: 20, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>{shop.n} {"\u2192"}</a>
+                ))}
+              </div>
             </div>
           ))}
+
+          <div style={{ textAlign: "center", marginTop: 20 }}>
+            <button onClick={() => { setSelectedArticle(blogArticles.find(a => a.id === "10-dupes-cosmetiques-mieux-que-original")); setPage("article"); }} style={{ background: "none", border: "1px solid #9b5c5c", color: "#9b5c5c", padding: "10px 24px", borderRadius: 20, fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
+              Lire l'article complet {"\u2192"}
+            </button>
+          </div>
         </div>
       </div>
 
