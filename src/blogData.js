@@ -13,60 +13,70 @@ export const blogArticles = [
 La Mer co\u00FBte 175\u20AC pour 60ml. Nivea co\u00FBte 2,50\u20AC pour 150ml. Plusieurs dermatologues ont confirm\u00E9 que les deux cr\u00E8mes partagent une base hydratante quasi identique. La diff\u00E9rence de prix s\u2019explique par le marketing et le packaging, pas par les actifs.
 
 **\u00C9conomie : 172,50\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=Nivea+Creme][ACHETER:Carrefour|https://www.carrefour.fr/s?q=nivea+creme]
 
 ## 2. e.l.f. Halo Glow vs Charlotte Tilbury Flawless Filter
 
 Le Flawless Filter \u00E0 42\u20AC est devenu viral sur TikTok. Mais le Halo Glow de e.l.f. \u00E0 14\u20AC offre exactement le m\u00EAme effet lumineux \"glass skin\". Certaines utilisatrices pr\u00E9f\u00E8rent m\u00EAme la texture du e.l.f.
 
 **\u00C9conomie : 28\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=elf+halo+glow][ACHETER:Sephora|https://www.sephora.fr/search?q=elf+halo+glow]
 
 ## 3. Essence Tinted Lip Oil vs Dior Lip Glow
 
 Le Dior Lip Glow \u00E0 38\u20AC est un classique. Mais l\u2019Essence Tinted Lip Oil \u00E0 3,99\u20AC offre la m\u00EAme hydratation teint\u00E9e avec une formule enrichie en huiles nourrissantes.
 
 **\u00C9conomie : 34\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=essence+tinted+lip+oil][ACHETER:Nocib\u00E9|https://www.nocibe.fr/catalogsearch/result/?q=essence+lip+oil]
 
 ## 4. CeraVe Cr\u00E8me Hydratante vs Drunk Elephant Protini
 
 Drunk Elephant Protini co\u00FBte 72\u20AC pour 50ml. CeraVe Moisturizing Cream co\u00FBte 11,90\u20AC pour 177ml. Les deux contiennent des c\u00E9ramides, de l\u2019acide hyaluronique et des peptides. CeraVe a m\u00EAme \u00E9t\u00E9 d\u00E9velopp\u00E9 avec des dermatologues.
 
 **\u00C9conomie : 60\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=cerave+creme+hydratante][ACHETER:Sephora|https://www.sephora.fr/search?q=cerave+moisturizing]
 
 ## 5. NYX Matte Lipstick vs MAC Ruby Woo
 
 MAC Ruby Woo est le rouge \u00E0 l\u00E8vres le plus vendu au monde \u00E0 23,50\u20AC. NYX Matte Lipstick en teinte Perfect Red offre un rendu quasi identique pour 7,90\u20AC. La tenue est comparable.
 
 **\u00C9conomie : 15,60\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=nyx+matte+lipstick+perfect+red][ACHETER:Nocib\u00E9|https://www.nocibe.fr/catalogsearch/result/?q=nyx+matte+lipstick]
 
 ## 6. Zara Vibrant Leather vs Dior Sauvage
 
 Dior Sauvage co\u00FBte 95\u20AC pour 60ml. Zara Vibrant Leather co\u00FBte 15,99\u20AC pour 80ml. Les notes olfactives sont tr\u00E8s proches : ambroxan, poivre, fra\u00EEcheur bois\u00E9e. Beaucoup de \"nez\" consid\u00E8rent que Zara a r\u00E9alis\u00E9 le meilleur clone du march\u00E9.
 
 **\u00C9conomie : 79\u20AC**
+[ACHETER:Zara|https://www.zara.com/fr/fr/search?searchTerm=vibrant+leather]
 
 ## 7. The Ordinary Niacinamide vs La Roche-Posay Effaclar Duo
 
 Effaclar Duo co\u00FBte 18,90\u20AC pour 40ml. The Ordinary Niacinamide 10% + Zinc co\u00FBte 6,90\u20AC pour 30ml. Les deux ciblent les imperfections avec de la niacinamide, mais The Ordinary a une concentration plus \u00E9lev\u00E9e.
 
 **\u00C9conomie : 12\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=the+ordinary+niacinamide+zinc][ACHETER:Sephora|https://www.sephora.fr/search?q=the+ordinary+niacinamide]
 
 ## 8. L\u2019Or\u00E9al Elvive Bond Repair vs Olaplex N\u00B03
 
 Olaplex N\u00B03 est le soin capillaire culte \u00E0 28\u20AC. L\u2019Or\u00E9al a d\u00E9velopp\u00E9 sa technologie Bond Repair avec de l\u2019acide citrique pour 9,90\u20AC. Les r\u00E9sultats sont tr\u00E8s proches sur cheveux ab\u00EEm\u00E9s.
 
 **\u00C9conomie : 18\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=loreal+elvive+bond+repair][ACHETER:Carrefour|https://www.carrefour.fr/s?q=elvive+bond+repair]
 
 ## 9. Lidl Suddenly Madame Glamour vs Chanel N\u00B05
 
 Le parfum le plus c\u00E9l\u00E8bre du monde \u00E0 135\u20AC. Lidl propose Suddenly Madame Glamour \u00E0 3,99\u20AC avec des notes florales ald\u00E9hyd\u00E9es tr\u00E8s similaires. Ce n\u2019est pas un clone exact, mais la ressemblance est troublante.
 
 **\u00C9conomie : 131\u20AC**
+[ACHETER:Lidl|https://www.lidl.fr]
 
 ## 10. Missha Time Revolution vs SK-II Facial Treatment Essence
 
 SK-II co\u00FBte 240\u20AC. Missha co\u00FBte 22\u20AC. Les deux sont bas\u00E9s sur du filtrat de ferment de levure (Galactomyces/Pitera). Missha contient plus de 90% de cet ingr\u00E9dient, comme SK-II.
 
 **\u00C9conomie : 218\u20AC**
+[ACHETER:Amazon|https://www.amazon.fr/s?k=missha+time+revolution+essence][ACHETER:iHerb|https://fr.iherb.com/search?kw=missha+time+revolution]
 
 ## Le total
 
